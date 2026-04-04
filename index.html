@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TokenVault · License Portal</title>
+  <title>ScriptyLicenses · License Portal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
@@ -177,7 +177,7 @@
 
 <nav>
   <div class="inner">
-    <div class="logo">TOKEN<span>VAULT</span></div>
+    <div class="logo">SCRIPTY<span>LICENSE</span></div>
     <div id="nav-user">
       <img id="nav-avatar" src="" alt=""/>
       <span id="nav-username"></span>
@@ -312,7 +312,7 @@
   </div>
 </div>
 
-<footer>TokenVault &middot; Firebase Realtime DB &middot; 15-second one-time tokens &middot; Auto-deleted on expiry</footer>
+<footer>ScriptyLicenses &middot; 15-second one-time tokens &middot; Auto-deleted on expiry</footer>
 <div id="toast"><span id="t-icon">✅</span>&nbsp;<span id="t-msg"></span></div>
 
 <!-- ════════════════════════════════════════════ -->
@@ -586,8 +586,16 @@ function renderDash(user, lic) {
   if (lic) {
     bl.textContent = '✓ Licensed';
     bl.className = 'badge licensed';
-    document.getElementById('profile-meta').innerHTML =
-      `Programs: ${lic.programs.length} / 4<br>Expires: ${lic.expires || 'Never'}`;
+    function formatExpiry(exp) {
+        if (!exp || exp === 'Never') return `<span style="color:var(--teal)">♾ Lifetime</span>`;
+        const diff = Math.ceil((new Date(exp) - new Date()) / (1000 * 60 * 60 * 24));
+        const fmt = new Date(exp).toLocaleDateString('en-GB', {day:'2-digit', month:'short', year:'numeric'});
+        if (diff < 0)   return `<span style="color:var(--red)">✗ Expired ${Math.abs(diff)}d ago</span>`;
+        if (diff <= 7)  return `<span style="color:var(--red)">⚠ ${diff}d left · ${fmt}</span>`;
+        if (diff <= 30) return `<span style="color:var(--amber)">⚡ ${diff}d left · ${fmt}</span>`;
+        return `<span style="color:var(--green)">✓ ${diff}d left · ${fmt}</span>`;
+    }
+    document.getElementById('profile-meta').innerHTML = `Programs ${lic.programs.length}/4<br>Expires ${formatExpiry(lic.expires)}`;
   } else {
     bl.textContent = '✗ No License';
     bl.className = 'badge no-license';
@@ -635,13 +643,20 @@ async function init() {
     return;
   }
 
-  // Restore from session (same tab refresh)
   const saved = sessionStorage.getItem('me');
   if (saved) {
-    me      = JSON.parse(saved);
-    license = JSON.parse(sessionStorage.getItem('lic') || 'null');
-    renderDash(me, license);
-    return;
+      me = JSON.parse(saved);
+      showView('loading');
+      try {
+          license = await fetchLicense(me.id);  
+          sessionStorage.setItem('lic', JSON.stringify(license));
+          renderDash(me, license);
+      } catch(e) {
+          toast('⚠️', 'Could not refresh license');
+          license = JSON.parse(sessionStorage.getItem('lic'));
+          renderDash(me, license);
+      }
+      return;
   }
 
   showView('login');
