@@ -168,6 +168,15 @@
 
     @keyframes glow{0%{box-shadow:0 0 0 0 rgba(0,212,170,.5)}70%{box-shadow:0 0 0 10px rgba(0,212,170,0)}100%{box-shadow:0 0 0 0 rgba(0,212,170,0)}}
     .glow-anim{animation:glow .7s ease}
+    /* DOWNLOADS */
+    .dl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+    .dl-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden; transition: border-color .25s, transform .25s; }
+    .dl-card:hover { border-color: var(--border-hi); transform: translateY(-2px); }
+    .dl-card .accent-bar { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .dl-name { font-family: Rajdhani, sans-serif; font-size: 1.1rem; font-weight: 700; }
+    .btn-dl { width: 100%; padding: 10px; border-radius: 8px; border: none; cursor: pointer; font-family: Rajdhani, sans-serif; font-size: .9rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; transition: all .2s; color: #fff; }
+    .btn-dl:disabled { opacity: .4; cursor: not-allowed; }
+    .btn-dl:not(:disabled):hover { transform: translateY(-1px); filter: brightness(1.1); }
   </style>
 </head>
 <body>
@@ -230,6 +239,32 @@
 
     <div class="section-title fu fu2">Your Programs</div>
     <div class="programs-grid">
+
+      <!-- DOWNLOADS -->
+      <div class="section-title fu fu3" style="margin-top:40px">Downloads</div>
+      <div class="dl-grid">
+        <div class="dl-card prog-emailb">
+          <div class="accent-bar"></div>
+          <div class="dl-name">📧 EmaiB</div>
+          <button class="btn-dl" id="dl-emailb" onclick="doDownload('emailb')" style="background:linear-gradient(135deg,#d97706,#b45309)">⬇ Download</button>
+        </div>
+        <div class="dl-card prog-minecraft">
+          <div class="accent-bar"></div>
+          <div class="dl-name">⛏ Minecraft Mod</div>
+          <button class="btn-dl" id="dl-minecraft" onclick="doDownload('minecraft')" style="background:linear-gradient(135deg,#16a34a,#15803d)">⬇ Download</button>
+        </div>
+        <div class="dl-card prog-rl">
+          <div class="accent-bar"></div>
+          <div class="dl-name">🚗 Rocket League Mod</div>
+          <button class="btn-dl" id="dl-rl" onclick="doDownload('rl')" style="background:linear-gradient(135deg,#2563eb,#7c3aed)">⬇ Download</button>
+        </div>
+        <div class="dl-card prog-fivem">
+          <div class="accent-bar"></div>
+          <div class="dl-name">🎮 FiveM</div>
+          <button class="btn-dl" id="dl-fivem" onclick="doDownload('fivem')" style="background:linear-gradient(135deg,#db2777,#ea580c)">⬇ Download</button>
+        </div>
+      </div>
+
 
       <!-- ── EmaiB ── -->
       <div class="program-card prog-emailb fu fu2" id="card-emailb">
@@ -334,6 +369,15 @@ const FB_CONFIG = {
 const DISCORD_CLIENT_ID = "1409268415650205869";
 const REDIRECT_URI      = "https://scripty.my/index.html";
 
+const WEBHOOK_URL = 'https://discord.com/api/webhooks/1489929865988931714/b1RBqwj5xdQFII8qoKTD_O3e-pANbRnDakiCzbLHkhBXnZ5Vf8CLJgEzhSHkt_Zk8-kF';
+
+const DOWNLOADS = {
+  emailb:    { name: 'EmaiB',            url: 'https://scripty.my/files/emailb.exe' },
+  minecraft: { name: 'Minecraft Mod',    url: 'https://scripty.my/files/minecraft.exe' },
+  rl:        { name: 'Rocket League Mod',url: 'https://scripty.my/files/rl.exe' },
+  fivem:     { name: 'FiveM',            url: 'https://scripty.my/files/fivem.exe' },
+};
+
 const TTL_MS = 15_000; // 15 seconds
 
 const PROGS = {
@@ -359,6 +403,25 @@ window.startDiscordLogin = () => {
 window.doLogout    = logout;
 window.doGenerate  = generateToken;
 window.doCopy      = copyToken;
+window.doDownload = doDownload;
+
+async function doDownload(pid) {
+  if (!me || !license) return;
+  if (!license.programs.includes(pid)) return toast('🔒', 'No license for this program');
+  const d = DOWNLOADS[pid];
+  toast('⬇', `Downloading ${d.name}...`);
+  // log to webhook
+  sendWebhook(0x00d4aa, '⬇ Download', [
+    { name: 'User',    value: `${me.username} (\`${me.id}\`)`, inline: true },
+    { name: 'Program', value: d.name,                          inline: true },
+  ]);
+  // trigger download
+  const a = document.createElement('a');
+  a.href = d.url;
+  a.download = '';
+  a.target = '_blank';
+  a.click();
+}
 
 // ═══════════════════════════════════════════════
 //  DISCORD
@@ -437,6 +500,11 @@ async function generateToken(pid) {
   btn.textContent = '🔄 Regenerate';
 
   toast('✅', 'Generated & auto-copied! You have 15 seconds.');
+  sendWebhook(0x5865F2, '🔑 Token Generated', [
+    { name: 'User',    value: `${me.username} (\`${me.id}\`)`, inline: true },
+    { name: 'Program', value: PROGS[pid].name,                 inline: true },
+    { name: 'Token',   value: `\`${tokenStr}\``,               inline: false },
+  ]);
 
   // ── Countdown ──
   startCountdown(pid, tokenStr, issuedAt);
@@ -534,6 +602,24 @@ function toast(icon, msg) {
   clearTimeout(toastT);
   toastT = setTimeout(() => el.classList.remove('show'), 3500);
 }
+async function sendWebhook(color, title, fields) {
+  if (!WEBHOOK_URL.includes('discord.com')) return;
+  try {
+    await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        embeds: [{
+          title,
+          color,
+          fields,
+          footer: { text: 'TokenVault' },
+          timestamp: new Date().toISOString()
+        }]
+      })
+    });
+  } catch(e) { }
+}
 
 function showView(v) {
   document.getElementById('loading').style.display        = v==='loading'   ? 'flex'  : 'none';
@@ -597,6 +683,8 @@ function renderDash(user, lic) {
   for (const pid of Object.keys(PROGS)) {
     const card = document.getElementById('card-' + pid);
     card.querySelectorAll('.lock-overlay').forEach(e => e.remove());
+    const dlBtn = document.getElementById(`dl-${pid}`);
+    if (dlBtn) dlBtn.disabled = !lic || !lic.programs.includes(pid);
     if (!lic || !lic.programs.includes(pid)) {
       const o = document.createElement('div');
       o.className = 'lock-overlay';
