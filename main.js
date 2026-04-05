@@ -29,7 +29,7 @@ const DOWNLOADS = {
 const TTL_MS = 15_000; // 15 seconds
 
 const PROGS = {
-  discordnuker:      { name: 'Discord Nuker',             prefix: 'dn' },
+  discordnuker:{ name: 'Discord Nuker',             prefix: 'dn' },
   minecraft:   { name: 'Minecraft Mod',             prefix: 'MCM' },
   rl:          { name: 'Rocket League Mod',         prefix: 'RLM' },
   emailbomber: { name: 'Email Bomber',              prefix: 'emb' },
