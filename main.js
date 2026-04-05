@@ -20,7 +20,7 @@ const REDIRECT_URI      = "https://scripty.my/index.html";
 const WEBHOOK_URL = 'https://discord.com/api/webhooks/1489929865988931714/b1RBqwj5xdQFII8qoKTD_O3e-pANbRnDakiCzbLHkhBXnZ5Vf8CLJgEzhSHkt_Zk8-kF';
 
 const DOWNLOADS = {
-  emailb:           { name: 'Discord Nuker',      url: 'https://scripty.my/files/discordnuker.exe' },
+  discordnuker:           { name: 'Discord Nuker',      url: 'https://scripty.my/files/discordnuker.exe' },
   minecraft:        { name: 'Minecraft Mod',      url: 'https://scripty.my/files/minecraft.exe' },
   rl:               { name: 'Rocket League Mod',  url: 'https://scripty.my/files/rl.exe' },
   emailbomber:      { name: 'Email Bomber',       url: 'https://scripty.my/files/emailbomber.exe' },
@@ -29,7 +29,7 @@ const DOWNLOADS = {
 const TTL_MS = 15_000; // 15 seconds
 
 const PROGS = {
-  emailb:      { name: 'Discord Nuker',             prefix: 'dn' },
+  discordnuker:      { name: 'Discord Nuker',             prefix: 'dn' },
   minecraft:   { name: 'Minecraft Mod',             prefix: 'MCM' },
   rl:          { name: 'Rocket League Mod',         prefix: 'RLM' },
   emailbomber: { name: 'Email Bomber',              prefix: 'emb' },
