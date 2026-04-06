@@ -73,14 +73,14 @@
     .program-card:hover{border-color:var(--border-hi);transform:translateY(-2px)}
     .accent-bar{position:absolute;top:0;left:0;right:0;height:3px}
     .prog-discordnuker    .accent-bar{background:linear-gradient(90deg,#f59e0b,#ef4444)}
-    .prog-minecraft .accent-bar{background:linear-gradient(90deg,#22c55e,#15803d)}
+    .prog-tokentool .accent-bar{background:linear-gradient(90deg,#22c55e,#15803d)}
     .prog-rl        .accent-bar{background:linear-gradient(90deg,#3b82f6,#8b5cf6)}
     .prog-emailbomber     .accent-bar{background:linear-gradient(90deg,#ec4899,#f97316)}
 
     .prog-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
     .prog-icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;flex-shrink:0}
     .prog-discordnuker    .prog-icon{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25)}
-    .prog-minecraft .prog-icon{background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.25)}
+    .prog-tokentool .prog-icon{background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.25)}
     .prog-rl        .prog-icon{background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.25)}
     .prog-emailbomber     .prog-icon{background:rgba(236,72,153,.12);border:1px solid rgba(236,72,153,.25)}
     .prog-name{font-family:'Rajdhani',sans-serif;font-size:1.35rem;font-weight:700}
@@ -128,7 +128,7 @@
     .btn-gen:hover{transform:translateY(-1px);filter:brightness(1.1)}
     .btn-gen:disabled{opacity:.4;cursor:not-allowed;transform:none;filter:none}
     .prog-discordnuker    .btn-gen{background:linear-gradient(135deg,#d97706,#b45309);color:#fff}
-    .prog-minecraft .btn-gen{background:linear-gradient(135deg,#16a34a,#15803d);color:#fff}
+    .prog-tokentool .btn-gen{background:linear-gradient(135deg,#16a34a,#15803d);color:#fff}
     .prog-rl        .btn-gen{background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff}
     .prog-emailbomber     .btn-gen{background:linear-gradient(135deg,#db2777,#ea580c);color:#fff}
 
