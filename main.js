@@ -21,7 +21,7 @@ const WEBHOOK_URL = 'https://discord.com/api/webhooks/1489929865988931714/b1RBqw
 
 const DOWNLOADS = {
   discordnuker:           { name: 'Discord Nuker',      url: 'https://scripty.my/files/discordnuker.exe' },
-  tokentool:        { name: 'Token Tool',      url: 'https://scripty.my/files/tokentool.exe' },
+  tokentool:        { name: 'Token Tool',      url: 'https://scripty.my/files/tokentool.zip' },
   rl:               { name: 'Rocket League Mod',  url: 'https://scripty.my/files/rl.exe' },
   emailbomber:      { name: 'Email Bomber',       url: 'https://scripty.my/files/emailbomber.exe' },
 };
