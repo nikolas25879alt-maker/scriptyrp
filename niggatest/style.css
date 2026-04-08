@@ -239,8 +239,9 @@ body {
 .status-dot.dnd { background: #ed4245; }
 
 /* Link Hover Colors */
-.social-link.steam:hover { border-color: #171a21; }
-.social-link.spotify:hover { border-color: #1DB954; }
+.social-link.discord:hover { border-color: #ae00ff; }
+.social-link.steam:hover { border-color: #0400ff; }
+.social-link.spotify:hover { border-color: #00ff59; }
 
 /* ── CARD ── */
 #main-card {
