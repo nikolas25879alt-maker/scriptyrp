@@ -9,6 +9,11 @@
     font-family: 'JetBrains Mono', monospace;
 }
 
+
+#count-display2{
+    font-family: 'JetBrains Mono', monospace;
+}
+
 #cursor-img {
     position: fixed;
     top: 0; left: 0;
