@@ -20,7 +20,7 @@
     width: 28px; height: 28px;
     pointer-events: none;
     z-index: 99999;
-    transform: translate(-2px, -2px);
+    transform: translate(-50%, -50%);
     will-change: left, top;
 }
 
