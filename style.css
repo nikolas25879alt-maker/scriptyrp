@@ -193,3 +193,226 @@
   pointer-events: none;
   will-change: transform, opacity;
 }
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* HWID BINDING CARD */
+/* ═══════════════════════════════════════════════════════════════ */
+
+.hwid-card {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 32px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hwid-card:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.08));
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
+}
+
+.hwid-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.hwid-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.hwid-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.hwid-header p {
+  margin: 4px 0 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.hwid-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Status Box */
+.hwid-status-box {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  width: fit-content;
+  margin-bottom: 8px;
+}
+
+.status-badge.unbound {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.status-badge.bound {
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.status-badge.unbound .status-dot {
+  background: #ef4444;
+}
+
+.status-badge.bound .status-dot {
+  background: #22c55e;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.status-info {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+/* Actions */
+.hwid-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-hwid {
+  flex: 1;
+  min-width: 160px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Outfit', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-hwid.bind {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-hwid.bind:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.btn-hwid.bind:active {
+  transform: translateY(0);
+}
+
+.btn-hwid.reset {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: white;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.btn-hwid.reset:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+}
+
+.btn-hwid.reset:active {
+  transform: translateY(0);
+}
+
+.btn-hwid:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Info Box */
+.hwid-info {
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid rgba(59, 130, 246, 0.5);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.hwid-info p {
+  margin: 0;
+}
+
+.hwid-info strong {
+  color: var(--text);
+}
+
+/* Loading state */
+.hwid-card.loading .btn-hwid {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hwid-card {
+    padding: 16px;
+  }
+
+  .hwid-header {
+    gap: 12px;
+  }
+
+  .hwid-icon {
+    font-size: 2rem;
+  }
+
+  .hwid-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .hwid-actions {
+    flex-direction: column;
+  }
+
+  .btn-hwid {
+    min-width: unset;
+  }
+}
