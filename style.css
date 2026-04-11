@@ -210,3 +210,23 @@
 @media(max-width:680px){
   .profile-meta { align-items: center; margin-top: 15px; }
 }
+/* HWID Action Buttons */
+#hwid-action-container .btn-copy {
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: 1px solid;
+}
+
+#hwid-action-container .btn-copy:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-1px);
+}
+
+/* Ensure badges don't wrap weirdly */
+.badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
