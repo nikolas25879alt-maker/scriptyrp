@@ -163,6 +163,8 @@
 
     .btn-logout{background:transparent;border:1px solid var(--border);color:var(--muted);padding:8px 18px;border-radius:8px;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.85rem;transition:all .2s;margin-left:8px}
     .btn-logout:hover{border-color:var(--red);color:var(--red)}
+    .btn-hwid-nav{background:transparent;border:1px solid rgba(245,158,11,.35);color:var(--amber);padding:8px 18px;border-radius:8px;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.85rem;transition:all .2s;margin-left:8px}
+    .btn-hwid-nav:hover{background:rgba(245,158,11,.1);border-color:var(--amber)}
     footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);position:relative;z-index:1}
 
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
