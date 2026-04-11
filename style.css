@@ -65,10 +65,6 @@
     .badge.licensed{background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.35);color:var(--teal)}
     .badge.no-license{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:var(--red)}
     .badge.discord-id{background:rgba(88,101,242,.1);border:1px solid rgba(88,101,242,.3);color:var(--discord)}
-    .badge.hwid-locked{background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.35);color:var(--teal)}
-    .badge.hwid-notset{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);color:var(--amber)}
-    .btn-hwid-reset{background:transparent;border:1px solid rgba(239,68,68,.3);color:var(--red);padding:4px 12px;border-radius:8px;cursor:pointer;font-size:.76rem;font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:.5px;text-transform:uppercase;transition:all .2s}
-    .btn-hwid-reset:hover{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.5)}
     .profile-meta{margin-left:auto;text-align:right;color:var(--muted);font-size:.82rem;line-height:1.8}
 
     .section-title{font-family:'Rajdhani',sans-serif;font-size:1.2rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:12px}
