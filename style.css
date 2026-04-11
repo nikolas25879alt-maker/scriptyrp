@@ -65,6 +65,10 @@
     .badge.licensed{background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.35);color:var(--teal)}
     .badge.no-license{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:var(--red)}
     .badge.discord-id{background:rgba(88,101,242,.1);border:1px solid rgba(88,101,242,.3);color:var(--discord)}
+    .badge.hwid-locked{background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.35);color:var(--teal)}
+    .badge.hwid-notset{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);color:var(--amber)}
+    .btn-hwid-reset{background:transparent;border:1px solid rgba(239,68,68,.3);color:var(--red);padding:4px 12px;border-radius:8px;cursor:pointer;font-size:.76rem;font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:.5px;text-transform:uppercase;transition:all .2s}
+    .btn-hwid-reset:hover{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.5)}
     .profile-meta{margin-left:auto;text-align:right;color:var(--muted);font-size:.82rem;line-height:1.8}
 
     .section-title{font-family:'Rajdhani',sans-serif;font-size:1.2rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:12px}
@@ -192,41 +196,4 @@
   mix-blend-mode: screen;
   pointer-events: none;
   will-change: transform, opacity;
-}
-
-/* Add to bottom of style.css */
-.profile-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-#hwid-action-container .btn-copy:hover {
-  background: rgba(255,255,255,0.05);
-  transform: translateY(-1px);
-}
-
-@media(max-width:680px){
-  .profile-meta { align-items: center; margin-top: 15px; }
-}
-/* HWID Action Buttons */
-#hwid-action-container .btn-copy {
-    transition: all 0.2s ease;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    border: 1px solid;
-}
-
-#hwid-action-container .btn-copy:hover {
-    background: rgba(255, 255, 255, 0.05);
-    transform: translateY(-1px);
-}
-
-/* Ensure badges don't wrap weirdly */
-.badge-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
 }
