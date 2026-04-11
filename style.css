@@ -193,3 +193,20 @@
   pointer-events: none;
   will-change: transform, opacity;
 }
+
+/* Add to bottom of style.css */
+.profile-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#hwid-action-container .btn-copy:hover {
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-1px);
+}
+
+@media(max-width:680px){
+  .profile-meta { align-items: center; margin-top: 15px; }
+}
