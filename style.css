@@ -258,9 +258,23 @@
 }
 .btn-close:hover { color: var(--red); }
 .modal-body {
-  padding: 24px; overflow-y: auto; color: var(--muted); line-height: 1.6; font-size: 0.95rem; text-align: left;
+  padding: 24px;
+  overflow-y: auto;
+  color: #a0a2c0; /* Slightly dimmer than main text */
+  line-height: 1.5;
+  font-size: 0.85rem; /* Small but readable */
+  text-align: left;
+  background: rgba(0,0,0,0.2); /* Slight dark tint to the text area */
 }
-.modal-body h3 { color: var(--text); margin: 20px 0 8px; font-family: 'Rajdhani', sans-serif; font-size: 1.2rem; }
+
+.modal-body h3 {
+  color: var(--teal); /* Highlight the sections in teal */
+  margin: 24px 0 8px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 .modal-body h3:first-child { margin-top: 0; }
 .modal-footer {
   padding: 20px 24px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end;
